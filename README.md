@@ -26,7 +26,7 @@ def bfs(visited,graph,node):<br>
                 visited.append(neighbour)<br>
                 queue.append(neighbour)<br>
 print("Following is the Breadth-First Search:")<br>
-bfs(visited,graph,'1')<br><br><br><br>
+bfs(visited,graph,'1')<br>
 <b>OUTPUT:</b><br>
 
 ![image](https://user-images.githubusercontent.com/97940332/207026350-272364f6-19bb-49c6-813e-d4d450dad8b6.png)
@@ -51,7 +51,7 @@ def dfs(visited,graph,node):<br>
             dfs(visited,graph,neighbour)<br>
 print("Following is the Depth-First Search:")<br>
 dfs(visited,graph,'5')<br>
-<b>OUTPUT:</b><br><br><br>
+<b>OUTPUT:</b><br>
 
 ![image](https://user-images.githubusercontent.com/97940332/207026465-d03c3220-cfa0-4907-b516-d362464b365b.png)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
