@@ -42,7 +42,7 @@ graph={<br>
     '4':['8'],<br>
     '8':[]<br>
 }<br>
-visited=set() #Set to keep track of visited nodes of graph<br>
+visited=set()<br>
 def dfs(visited,graph,node):<br>
     if node not in visited:<br>
         print(node)<br>
@@ -52,12 +52,10 @@ def dfs(visited,graph,node):<br>
 print("Following is the Depth-First Search:")<br>
 dfs(visited,graph,'5')<br>
 <b>OUTPUT:</b><br>
-
 ![image](https://user-images.githubusercontent.com/97940332/207026465-d03c3220-cfa0-4907-b516-d362464b365b.png)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 <b>#3.Water jug problem</b><br>
-
 from collections import defaultdict<br>
 jug1,jug2,aim=4,3,2<br>
 visited=defaultdict(lambda:False)<br>
