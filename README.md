@@ -1,6 +1,6 @@
 # ML-AI
 
-<b>#1.BFS</b><br>
+**#1.BFS<br>**
 graph={<br>
     '1':['2','10'],<br>
     '2':['3','8'],<br>
@@ -28,7 +28,6 @@ def bfs(visited,graph,node):<br>
 print("Following is the Breadth-First Search:")<br>
 bfs(visited,graph,'1')<br>
 <b>OUTPUT:</b><br>
-
 ![image](https://user-images.githubusercontent.com/97940332/207026350-272364f6-19bb-49c6-813e-d4d450dad8b6.png)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 <b>#2.DFS</b><br>
@@ -79,7 +78,6 @@ print("Steps:")<br>
 waterjugSolver(0,0)<br>
 <b>OUTPUT:</b><br>
 ![image](https://user-images.githubusercontent.com/97940332/207577086-cfb62c46-4913-44cf-a612-02e08f3eabb1.png)
-
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 <b>#4.Tower Of Hanoi</b><br>
 def TowerOfHanoi(n,source,destination,auxiliary):<br>
@@ -94,7 +92,7 @@ TowerOfHanoi(n,'A','B','C')<br>
 <b>OUTPUT</b><br>
 ![image](https://user-images.githubusercontent.com/97940332/207577811-0acec237-13a7-45b7-b418-230fba5907aa.png)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-<b>#5.Best First Search</b><br>
+<b>5.Best First Search</b><br>
 from queue import PriorityQueue<br>
 import matplotlib.pyplot as plt<br>
 import networkx as nx<br>
