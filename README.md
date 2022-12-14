@@ -58,80 +58,80 @@ dfs(visited,graph,'5')<br>
 
 <b>#3.Water jug problem</b><br>
 
-from collections import defaultdict
-jug1,jug2,aim=4,3,2
-visited=defaultdict(lambda:False)
-def waterjugSolver(amt1,amt2):
-    if(amt1==aim and amt2 ==0)or(amt2==aim and amt1==0):
-        print(amt1,amt2)
-        return True
-    if visited[(amt1,amt2)]==False:
-        print(amt1,amt2)
-        visited[(amt1,amt2)]=True
-        return(waterjugSolver(0,amt2)or
-              waterjugSolver(amt1,0)or
-               waterjugSolver(jug1,amt2)or
-               waterjugSolver(amt1,jug2)or
-               waterjugSolver(amt1+min(amt2,(jug1-amt1)),
-                             amt2-min(amt2,(jug1-amt1)))or
-               waterjugSolver(amt1-min(amt1,(jug2-amt2)),
-                             amt2=min(amt1,(jug2-amt2))))
-    else:
-        return False
-print("Steps:")
-waterjugSolver(0,0)
-<b>OUTPUT:</b><br>
+from collections import defaultdict<br>
+jug1,jug2,aim=4,3,2<br>
+visited=defaultdict(lambda:False)<br>
+def waterjugSolver(amt1,amt2):<br>
+    if(amt1==aim and amt2 ==0)or(amt2==aim and amt1==0):<br>
+        print(amt1,amt2)<br>
+        return True<br>
+    if visited[(amt1,amt2)]==False:<br>
+        print(amt1,amt2)<br>
+        visited[(amt1,amt2)]=True<br>
+        return(waterjugSolver(0,amt2)or<br>
+              waterjugSolver(amt1,0)or<br>
+               waterjugSolver(jug1,amt2)or<br>
+               waterjugSolver(amt1,jug2)or<br>
+               waterjugSolver(amt1+min(amt2,(jug1-amt1)),<br>
+                             amt2-min(amt2,(jug1-amt1)))or<br>
+               waterjugSolver(amt1-min(amt1,(jug2-amt2)),<br>
+                             amt2=min(amt1,(jug2-amt2))))<br>
+    else:<br>
+        return False<br>
+print("Steps:")<br>
+waterjugSolver(0,0)<br>
+<b>OUTPUT:</b><br><br>
 ![image](https://user-images.githubusercontent.com/97940332/207577086-cfb62c46-4913-44cf-a612-02e08f3eabb1.png)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 <b>#4.Tower Of Hanoi</b><br>
-def TowerOfHanoi(n,source,destination,auxiliary):
-    if n==1:
-        print("Move disk 1 from source",source,"to deastination",destination)
-        return
-    TowerOfHanoi(n-1,source,auxiliary,destination)
-    print("Move disk",n,"from source",source,"to destination",destination)
-    TowerOfHanoi(n-1,auxiliary,destination,source)
+def TowerOfHanoi(n,source,destination,auxiliary):<br>
+    if n==1:<br>
+        print("Move disk 1 from source",source,"to deastination",destination)<br>
+        return<br>
+    TowerOfHanoi(n-1,source,auxiliary,destination)<br>
+    print("Move disk",n,"from source",source,"to destination",destination)<br>
+    TowerOfHanoi(n-1,auxiliary,destination,source)<br>
     
-n=3
-TowerOfHanoi(n,'A','B','C')
-<b>OUTPUT</b><br>
+n=3<br>
+TowerOfHanoi(n,'A','B','C')<br>
+<b>OUTPUT</b><br><br>
 ![image](https://user-images.githubusercontent.com/97940332/207577811-0acec237-13a7-45b7-b418-230fba5907aa.png)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 <b>5.Besy First Search</b><br>
-from queue import PriorityQueue
-import matplotlib.pyplot as plt
-import networkx as nx
+from queue import PriorityQueue<br>
+import matplotlib.pyplot as plt<br>
+import networkx as nx<br>
 
-def best_first_search(source,target,n):
-    visited=[0]*n
-    visited[source]=True
-    pq=PriorityQueue()
-    pq.put((0,source))
-    while pq.empty()==False:
-        u=pq.get()[1]
-        print(u,end=" ")
-        if u==target:
-            break
-        for v,c in graph[u]:
-            if visited[v]==False:
-                visited[v]=True
-                pq.put((c,v))
-            #print()
-def addedge(x,y,cost):
-    graph[x].append((y,cost))
-    graph[y].append((x,cost))
-v=int(input("Enter the number of nodes:"))
-graph=[[]for i in range(v)]
-e=int(input("Enter the number of edges:"))
-print("Enter the edges along with their weights: ")
-for i in range(e):
-    x,y,z=list(map(int,input().split()))
-    addedge(x,y,z)
-source=int(input("Enter the source Node:"))
-target=int(input("Enter the target/destination Node:"))
-print("Path:",end="")
-best_first_search(source,target,v)
+def best_first_search(source,target,n):<br>
+    visited=[0] * n<br>
+    visited[source]=True<br>
+    pq=PriorityQueue()<br>
+    pq.put((0,source))<br>
+    while pq.empty()==False:<br>
+        u=pq.get()[1]<br>
+        print(u,end=" ")<br>
+        if u==target:<br>
+            break<br>
+        for v,c in graph[u]:<br>
+            if visited[v]==False:<br>
+                visited[v]=True<br>
+                pq.put((c,v))<br>
+            #print()<br>
+def addedge(x,y,cost):<br>
+    graph[x].append((y,cost))<br>
+    graph[y].append((x,cost))<br>
+v=int(input("Enter the number of nodes:"))<br>
+graph=[[]for i in range(v)]<br>
+e=int(input("Enter the number of edges:"))<br>
+print("Enter the edges along with their weights: ")<br>
+for i in range(e):<br>
+    x,y,z=list(map(int,input().split()))<br>
+    addedge(x,y,z)<br>
+source=int(input("Enter the source Node:"))<br>
+target=int(input("Enter the target/destination Node:"))<br>
+print("Path:",end="")<br>
+best_first_search(source,target,v)<br>
 <b>OUTPUT</b><br>
 ![image](https://user-images.githubusercontent.com/97940332/207578184-c0824c28-de9c-4fc7-9464-f2d6d5f9874a.png)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
