@@ -102,7 +102,6 @@ TowerOfHanoi(n,'A','B','C')<br>
 from queue import PriorityQueue<br>
 import matplotlib.pyplot as plt<br>
 import networkx as nx<br>
-
 def best_first_search(source,target,n):<br>
     visited=[0] * n<br>
     visited[source]=True<br>
