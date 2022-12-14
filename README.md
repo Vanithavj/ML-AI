@@ -54,7 +54,6 @@ dfs(visited,graph,'5')<br>
 <b>OUTPUT:</b><br>
 ![image](https://user-images.githubusercontent.com/97940332/207026465-d03c3220-cfa0-4907-b516-d362464b365b.png)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 <b>#3.Water jug problem</b><br>
 from collections import defaultdict<br>
 jug1,jug2,aim=4,3,2<br>
@@ -78,7 +77,7 @@ def waterjugSolver(amt1,amt2):<br>
         return False<br>
 print("Steps:")<br>
 waterjugSolver(0,0)<br>
-<b>OUTPUT:</b><br><br>
+<b>OUTPUT:</b><br>
 ![image](https://user-images.githubusercontent.com/97940332/207577086-cfb62c46-4913-44cf-a612-02e08f3eabb1.png)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -90,13 +89,12 @@ def TowerOfHanoi(n,source,destination,auxiliary):<br>
     TowerOfHanoi(n-1,source,auxiliary,destination)<br>
     print("Move disk",n,"from source",source,"to destination",destination)<br>
     TowerOfHanoi(n-1,auxiliary,destination,source)<br>
-    
 n=3<br>
 TowerOfHanoi(n,'A','B','C')<br>
-<b>OUTPUT</b><br><br>
+<b>OUTPUT</b><br>
 ![image](https://user-images.githubusercontent.com/97940332/207577811-0acec237-13a7-45b7-b418-230fba5907aa.png)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-<b>5.Besy First Search</b><br>
+<b>#5.Best First Search</b><br>
 from queue import PriorityQueue<br>
 import matplotlib.pyplot as plt<br>
 import networkx as nx<br>
