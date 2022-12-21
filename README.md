@@ -27,8 +27,8 @@ def bfs(visited,graph,node):<br>
                 queue.append(neighbour)<br>
 print("Following is the Breadth-First Search:")<br>
 bfs(visited,graph,'1')<br>
-<b>OUTPUT:</b><br>
-![image](https://user-images.githubusercontent.com/97940332/207026350-272364f6-19bb-49c6-813e-d4d450dad8b6.png)
+ OUTPUT:<br>
+ ![image](https://user-images.githubusercontent.com/97940332/207026350-272364f6-19bb-49c6-813e-d4d450dad8b6.png)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 <b>#2.DFS</b><br>
 graph={<br>
@@ -128,7 +128,144 @@ best_first_search(source,target,v)<br>
 <b>OUTPUT</b><br>
 ![image](https://user-images.githubusercontent.com/97940332/207578184-c0824c28-de9c-4fc7-9464-f2d6d5f9874a.png)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-           
+ #6.TIC TAC TOE
+ #Tic-Tac-Toe Program using<br>
+#random number in Python<br>
+
+#importing all necessary libraries<br>
+import numpy as np<br>
+import random<br>
+from time import sleep<br>
+
+#Creates an empty board<br>
+
+
+def create_board():<br>
+	return(np.array([[0, 0, 0],<br>
+					[0, 0, 0],<br>
+					[0, 0, 0]]))<br>
+
+#Check for empty places on board<br>
+
+
+def possibilities(board):<br>
+	l = []<br>
+
+	for i in range(len(board)):<br>
+		for j in range(len(board)):<br>
+
+			if board[i][j] == 0:<br>
+				l.append((i, j))<br>
+	return(l)<br>
+
+#Select a random place for the player<br>
+
+
+def random_place(board, player):<br>
+	selection = possibilities(board)<br>
+	current_loc = random.choice(selection)<br>
+	board[current_loc] = player<br>
+	return(board)<br>
+
+#Checks whether the player has three<br>
+#of their marks in a horizontal row<br>
+
+
+def row_win(board, player):<br>
+	for x in range(len(board)):<br>
+		win = True<br>
+
+		for y in range(len(board)):<br>
+			if board[x, y] != player:<br>
+				win = False<br>
+				continue<br>
+<br>
+		if win == True:<br>
+			return(win)<br>
+	return(win)<br>
+
+#Checks whether the player has three<br>
+#of their marks in a vertical row<br>
+
+
+def col_win(board, player):<br>
+	for x in range(len(board)):<br>
+		win = True<br>
+
+		for y in range(len(board)):<br>
+			if board[y][x] != player:<br>
+				win = False<br>
+				continue<br>
+<br>
+		if win == True:<br>
+			return(win)<br>
+	return(win)<br>
+
+#Checks whether the player has three<br>
+#of their marks in a diagonal row<br>
+
+
+def diag_win(board, player):<br>
+	win = True<br>
+	y = 0<br>
+	for x in range(len(board)):<br>
+		if board[x, x] != player:<br>
+			win = False<br>
+	if win:<br>
+		return win<br>
+	win = True<br>
+	if win:<br>
+		for x in range(len(board)):<br>
+			y = len(board) - 1 - x<br>
+			if board[x, y] != player:<br>
+				win = False<br>
+	return win<br>
+
+#Evaluates whether there is<br>
+#a winner or a tie<br>
+
+
+def evaluate(board):<br>
+	winner = 0<br>
+
+	for player in [1, 2]:<br>
+		if (row_win(board, player) or<br>
+				col_win(board, player) or<br>
+				diag_win(board, player)):<br>
+
+			winner = player<br>
+
+	if np.all(board != 0) and winner == 0:<br>
+		winner = -1<br>
+	return winner<br>
+
+#<br>Main function to start the game<br>
+
+
+def play_game():<br>
+	board, winner, counter = create_board(), 0, 1<br>
+	print(board)<br>
+	sleep(2)<br>
+<br>
+	while winner == 0:<br>
+		for player in [1, 2]:<br>
+			board = random_place(board, player)<br>
+			print("Board after " + str(counter) + " move")<br>
+			print(board)<br>
+			sleep(2)<br>
+			counter += 1<br>
+			winner = evaluate(board)<br>
+			if winner != 0:<br>
+				break<br>
+	return(winner)<br>
+
+
+#Driver Code<br>
+print("Winner is: " + str(play_game()))<br>
+<br><br>
+OUTPUT:
+![image](https://user-images.githubusercontent.com/97940332/208875975-8696aa19-9149-4ca0-a7b7-fb21b1f0f1d6.png)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
