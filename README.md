@@ -266,6 +266,41 @@ print("Winner is: " + str(play_game()))<br>
 OUTPUT:
 ![image](https://user-images.githubusercontent.com/97940332/208875975-8696aa19-9149-4ca0-a7b7-fb21b1f0f1d6.png)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#6.Program to implement Travelling sales man problem
+from sys import maxsize
+from itertools import permutations
+V=4
+
+def travellingSalesProblem(graph,s):
+    #store all vertex apart from source vertex
+    vertex=[]
+    for i in range(V):
+        if i!=s:
+            vertex.append(i)
+#store minimum weight Hamiltonian Cycle
+        min_path=maxsize
+        next_permutation=permutations(vertex)
+        for i in next_permutation:
+    #store current Path weight
+            current_pathweight=0
+    #compute current path weight
+            k=s
+            for j in i:
+                current_pathweight+=graph[k][j]
+                k=j
+            current_pathweight+=graph[k][s]
+        #Update minimum
+            min_path=min(min_path,current_pathweight)
+    return min_path
+#Driver code
+if __name__=="__main__":
+    #matrix representation of graph
+    graph=[[0,10,15,20],[10,0,35,25],
+          [15,35,0,30],[20,25,30,0]]
+    s=0
+    print(travellingSalesProblem(graph,s))
+ OUTPUT:
+ ![image](https://user-images.githubusercontent.com/97940332/209534941-f2be311a-b05f-4940-8979-ff60ac445e04.png)
 
 
 
