@@ -266,7 +266,7 @@ print("Winner is: " + str(play_game()))<br>
 OUTPUT:
 ![image](https://user-images.githubusercontent.com/97940332/208875975-8696aa19-9149-4ca0-a7b7-fb21b1f0f1d6.png)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#6.Program to implement Travelling sales man problem<br>
+#7.Program to implement Travelling sales man problem<br>
 from sys import maxsize<br>
 from itertools import permutations<br>
 V=4<br>
@@ -301,6 +301,86 @@ if __name__=="__main__":<br>
     print(travellingSalesProblem(graph,s))<br><br><br>
  OUTPUT:
  ![image](https://user-images.githubusercontent.com/97940332/209534941-f2be311a-b05f-4940-8979-ff60ac445e04.png)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#8.FIND-S ALGORITHM<br>
+
+import csv<br>
+hypo=['%','%','%','%','%','%']<br>
+with open('ws.csv')as csv_file:<br>
+    readcsv=csv.reader(csv_file,delimiter=',')<br>
+    data=[]<br>
+    print("\nthe given training examples are:")<br>
+    for row in readcsv:<br>
+        print(row)<br>
+        if row[len(row)-1]=='Yes':<br>
+            data.append(row)<br>
+print('\nThe positive examples are:')<br>
+for x in data:<br>
+    print(x)<br>
+totalExamples=len(data)<br>
+i=0<br>
+j=0<br>
+k=0<br>
+print("\nThe steps of the Find-s algorithm are\n",hypo)<br>
+list=[]<br>
+p=0<br>
+d=len(data[p])-1<br>
+for j in range(d):<br>
+    list.append(data[i][j])<br>
+hypo=list<br>
+for i in range(1,totalExamples):<br>
+    for k in range(d):<br>
+        if hypo[k]!=data[i][k]:<br>
+            hypo[k]='?'<br>
+                                
+        else:<br>
+            hypo[k]<br>
+    print(hypo)<br>
+print("\n The maximally specific Find-s hypothesis for the given training examples is");<br>
+list=[]<br>
+for i in range(d):<br>
+    list.append(hypo[i])<br>
+print(list)<br><br><br>
+
+OUTPUT:
+![image](https://user-images.githubusercontent.com/97940332/209802613-67eff0a8-4636-4e2d-aff9-472504f02bcd.png)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#9.CANDIDATE ELIMINATION<br>
+import csv<br>
+with open("ws.csv")as csv_file:<br>
+    readcsv=csv.reader(csv_file,delimiter=',')<br>
+    data=[]<br>
+    for row in readcsv:<br>
+        data.append(row)<br>
+    s=data[1][:-1]<br>
+    g=[['?' for i in range(len(s))]for j in range(len(s))]<br>
+    for i in data:<br>
+        if i[-1]=="Yes":<br>
+            for j in range(len(s)):<br>
+                if i[j]!=s[j]:<br>
+                    s[j]='?'<br>
+                    g[j][j]='?'<br>
+        elif i[-1]=="No":<br>
+            for j in range(len(s)):<br>
+                if i[j]!=s[j]:<br>
+                    g[j][j]=s[j]<br>
+                else:<br>
+                    g[j][j]="?"<br>
+        print("\nSteps of Candidate Elimination Algorithm",data.index(i)+1)<br>
+        print(s)<br>
+        print(g)<br>
+    gh=[]<br>
+    for i in g:<br>
+        for j in i:<br>
+            if j!='?':<br>
+                gh.append(i)<br>
+                break<br>
+    print("\n Final specific hypothysis:\n",s)<br>
+    print("\nFinal general hypothysis:\n",gh)<br><br><br>
+   
+   OUTPUT:
+   ![image](https://user-images.githubusercontent.com/97940332/209803299-1e058780-76d9-4df8-ba5f-5eca1bd8a720.png)
 
 
 
