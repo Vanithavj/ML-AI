@@ -427,6 +427,114 @@ solveNQ()<br><br><br>
 OUTPUT:
 ![image](https://user-images.githubusercontent.com/97940332/210219303-09769948-26c1-4d20-8954-b3e71feca94b.png)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+#11.A* problem<br>
+
+
+def aStarAlgo(start_node, stop_node):<br>
+    open_set = set(start_node)<br>
+    closed_set = set()<br>
+    g = {}               #store distance from starting node<br>
+    parents = {}         # parents contains an adjacency map of all nodes<br>
+    #distance of starting node from itself is zero<br>
+    g[start_node] = 0<br>
+    #start_node is root node i.e it has no parent nodes<br>
+    #so start_node is set to its own parent node<br>
+    parents[start_node] = start_node<br>
+    while len(open_set) > 0:<br>
+        n = None<br>
+        #node with lowest f() is found<br>
+        for v in open_set:<br>
+            if n == None or g[v] + heuristic(v) < g[n] + heuristic(n):<br>
+                n = v<br>
+        if n == stop_node or Graph_nodes[n] == None:<br>
+            pass<br>
+        else:<br>
+            for (m, weight) in get_neighbors(n):<br>
+                #nodes 'm' not in first and last set are added to first<br>
+                #n is set its parent<br>
+                if m not in open_set and m not in closed_set:<br>
+                    open_set.add(m)<br>
+                    parents[m] = n<br>
+                    g[m] = g[n] + weight<br>
+                #for each node m,compare its distance from start i.e g(m) to the<br>
+                #from start through n node<br>
+                else:<br>
+                    if g[m] > g[n] + weight:<br>
+                        #update g(m)<br>
+                        g[m] = g[n] + weight<br>
+                        #change parent of m to n<br>
+                        parents[m] = n<br>
+                        #if m in closed set,remove and add to open<br>
+                        if m in closed_set:<br>
+                            closed_set.remove(m)<br>
+                            open_set.add(m)<br>
+        if n == None:<br>
+            print('Path does not exist!')<br>
+            return None<br>
+        <br>
+        # if the current node is the stop_node<br>
+        # then we begin reconstructin the path from it to the start_node<br>
+        if n == stop_node:<br>
+            path = []<br>
+            while parents[n] != n:<br>
+                path.append(n)<br>
+                n = parents[n]<br>
+            path.append(start_node)<br>
+            path.reverse()<br>
+            print('Path found: {}'.format(path))<br>
+            return path<br>
+        # remove n from the open_list, and add it to closed_list<br>
+        # because all of his neighbors were inspected<br>
+        open_set.remove(n)<br>
+        closed_set.add(n)<br>
+    print('Path does not exist!')<br>
+    return None<br>
+
+#define fuction to return neighbor and its distance<br>
+#from the passed node<br>
+def get_neighbors(v):<br>
+    if v in Graph_nodes:<br>
+        return Graph_nodes[v]<br>
+    else:<br>
+        return None<br>
+#for simplicity we ll consider heuristic distances given<br>
+#and this function returns heuristic distance for all nodes<br>
+def heuristic(n):<br>
+    H_dist = {<br>
+        'A': 11,<br>
+        'B': 6,<br>
+        'C': 5,<br>
+        'D': 7,<br>
+        'E': 3,<br>
+        'F': 6,<br>
+        'G': 5,<br>
+        'H': 3,<br>
+        'I': 1,<br>
+        'J': 0<br>
+    }<br>
+    return H_dist[n]<br>
+
+#Describe your graph here<br>
+Graph_nodes = {<br>
+    'A': [('B', 6), ('F', 3)],<br>
+    'B': [('A', 6), ('C', 3), ('D', 2)],<br>
+    'C': [('B', 3), ('D', 1), ('E', 5)],<br>
+    'D': [('B', 2), ('C', 1), ('E', 8)],<br>
+    'E': [('C', 5), ('D', 8), ('I', 5), ('J', 5)],<br>
+    'F': [('A', 3), ('G', 1), ('H', 7)],<br>
+    'G': [('F', 1), ('I', 3)],<br>
+    'H': [('F', 7), ('I', 2)],<br>
+    'I': [('E', 5), ('G', 3), ('H', 2), ('J', 3)],<br>
+}<br>
+
+aStarAlgo('A', 'J')<br><br><br>
+OUTPUT:
+![image](https://user-images.githubusercontent.com/97940332/210223665-1eb0e372-0c25-4545-9497-e16d8990bb76.png)
+
+
+
+ 
+
 
     
 
