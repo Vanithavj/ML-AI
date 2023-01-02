@@ -380,7 +380,55 @@ with open("ws.csv")as csv_file:<br>
     print("\nFinal general hypothysis:\n",gh)<br><br><br>
    
    OUTPUT:
-   ![image](https://user-images.githubusercontent.com/97940332/209803299-1e058780-76d9-4df8-ba5f-5eca1bd8a720.png)
+   ![image](https://user-images.githubusercontent.com/97940332/209803299-1e058780-76d9-4df8-ba5f-5eca1bd8a720.png
+   -------------------------------------------------------------------------------------------------------------------------------------------------------------
+#10.N Queen's Problem<br>
+global N<br>
+N=4<br>
+def printSolution(board):<br>
+    for i in range(N):<br>
+        for j in range(N):<br>
+            print(board[i][j],end=" ")<br>
+        print()<br>
+def isSafe(board,row,col):<br>
+    for i in range(col):<br>
+        if board[row][i]==1:<br>
+            return False<br>
+    for i,j in zip(range(row,-1,-1),<br>
+                  range(col,-1,-1)):<br>
+        if board[i][j]==1:<br>
+            return False<br>
+    for i,j in zip(range(row,-1,-1),<br>
+                 range(col,-1,-1)):<br>
+        if board[i][j]==1:<br>
+            return False<br>
+    return True<br>
+def solveNQUtil(board,col):<br>
+    if col>=N:<br>
+        return True<br>
+    for i in range(N):<br>
+        if isSafe(board,i,col):<br>
+            board[i][col]=1<br>
+            if solveNQUtil(board,col+1)==True:<br>
+                return True<br>
+            board[i][col]=0<br>
+    return False<br>
+def solveNQ():<br>
+    board=[[0,0,0,0],<br>
+           [0,0,0,0],<br>
+           [0,0,0,0],<br>
+           [0,0,0,0]]<br>
+    if solveNQUtil(board,0)==False:<br>
+        print("Solution does not exist")<br>
+        return False<br>
+    printSolution(board)<br>
+    return True<br>
+solveNQ()<br><br><br>
+OUTPUT:
+![image](https://user-images.githubusercontent.com/97940332/210219303-09769948-26c1-4d20-8954-b3e71feca94b.png)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    
 
 
 
