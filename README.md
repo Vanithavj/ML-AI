@@ -26,7 +26,7 @@ def bfs(visited,graph,node):<br>
                 visited.append(neighbour)<br>
                 queue.append(neighbour)<br>
 print("Following is the Breadth-First Search:")<br>
-bfs(visited,graph,'1')<br>
+bfs(visited,graph,'1')<br></b>
  OUTPUT:<br>
  ![image](https://user-images.githubusercontent.com/97940332/207026350-272364f6-19bb-49c6-813e-d4d450dad8b6.png)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
